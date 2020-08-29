@@ -1,8 +1,7 @@
 {
     "id": "Main",
     "ssl": false,
-    "domain": "test.msediqi.lan",
+    "domain": "centauri.dev",
     "rootpageuid": "1",
-    "pageNotFound": "",
-    "pageTitlePrefix": "\ud83d\udd25 Centauri CMS \u00bb "
+    "pageTitlePrefix": "Centauri CMS "
 }

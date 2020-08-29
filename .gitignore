@@ -14,8 +14,8 @@ yarn-error.log
 
 
 # Centauri
-.htaccess
 composer.lock
 /resources/js/centauri-env.js
 /storage/Centauri/temp/Cache
+/storage/logs/*.log
 
