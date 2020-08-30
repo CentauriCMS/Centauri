@@ -13,7 +13,7 @@
 
     "require": {
         "php": "^7.2.5",
-        "centauri/cms": "^7.0",
+        "centauri/cms": "dev-master",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
