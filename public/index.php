@@ -1,14 +1,5 @@
 <?php
 
-use Centauri\CMS\Caches\StaticFileCache;
-use Centauri\CMS\Centauri;
-use Centauri\CMS\CentauriServer;
-use Centauri\CMS\CentauriServer\KernelLevelCaching;
-use Centauri\CMS\Utility\PathUtility;
-
-define("CENTAURI_START", microtime(true));
-
-
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
@@ -16,7 +7,7 @@ define("CENTAURI_START", microtime(true));
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
-define("LARAVEL_START", microtime(true));
+define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +21,10 @@ define("LARAVEL_START", microtime(true));
 |
 */
 
-// require __DIR__ . "/../vendor/autoload.php";
+require __DIR__.'/../vendor/autoload.php';
+
+$Centauri = new \Centauri\CMS\Application\CentauriApplication();
+$Centauri = $Centauri->Centauri;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,26 +38,7 @@ define("LARAVEL_START", microtime(true));
 |
 */
 
-$app = require_once __DIR__ . "/../bootstrap/app.php";
-
-
-/**
- * CentauriCMS - Server-Level-Configuration
- * 
- * This configuration handling will take care before actual web-/http-requests are sent to the server.
- * Those could be for use when e.g. making a Kernel-Level-Caching (as below) or anything similiar.
- */
-$centauriServer = Centauri::makeInstance(CentauriServer::class);
-
-$centauriServerConfig = $centauriServer->init();
-
-if(
-    $centauriServerConfig["KERNEL_LEVEL_CACHING"]["status"] &&
-    $centauriServerConfig["KERNEL_LEVEL_CACHING"]["__handle"]
-) {
-    return;
-}
-
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -82,22 +57,6 @@ $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );
-
-/**
- * CentauriCMS - Kernel-Level-Caching
- * 
- * The cache will only be set if the config for this is active (manually) to true and it's not filtered.
- */
-if($centauriServerConfig["KERNEL_LEVEL_CACHING"]["status"]) {
-    $kernelLevelCaching = Centauri::makeInstance(KernelLevelCaching::class);
-
-    if(!$kernelLevelCaching->cachableRequestUri()) {
-        StaticFileCache::setCacheKernel(
-            PathUtility::getRequestedURL(),
-            $response->getContent()
-        );
-    }
-}
 
 $response->send();
 
