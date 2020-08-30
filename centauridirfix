@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+if(!is_dir("./storage/Centauri/Domains")) {
+    mkdir("./storage/Centauri/Domains");
+}
+
+$domainFiles = array_diff(
+    scandir("./storage/Centauri/Domains"),
+
+    [
+        ".",
+        ".."
+    ]
+);
