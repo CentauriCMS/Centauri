@@ -15,7 +15,6 @@ yarn-error.log
 
 # Centauri Core - Can be removed on development/staging/production environments.
 /Build
-/public/Packages
 
 
 # Centauri
