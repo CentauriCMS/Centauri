@@ -44,10 +44,10 @@ return [
         "title" => "Planer"
     ],
     "be_users" => [
-        "title" => "BE-Users"
+        "title" => "Backend Users"
     ],
     "user_permission_groups" => [
-        "title" => "Rechte-Gruppen"
+        "title" => "Gruppen"
     ],
 
 ];

@@ -1,6 +1,6 @@
 <?php
 
-use Centauri\Model\Page;
+use Centauri\CMS\Model\Page;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -41,7 +41,7 @@ class CentauriPages extends Migration
             $table->string("page_type")->default("rootpage");
             $table->tinyInteger("storage_id")->default(null)->nullable();
             $table->tinyInteger("domain_id")->default(null)->nullable();
-            $table->integer("sorting");
+            $table->integer("sorting")->default(null)->nullable();
         });
 
         $page = new Page;

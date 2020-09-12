@@ -47,10 +47,10 @@ return [
         "title" => "Scheduler"
     ],
     "be_users" => [
-        "title" => "BE-Users"
+        "title" => "Backend Users"
     ],
     "user_permission_groups" => [
-        "title" => "Permission-Groups"
+        "title" => "Permission Groups"
     ],
 
 ];
