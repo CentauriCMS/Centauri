@@ -31,15 +31,21 @@ class CentauriBeRoles extends Migration
 
             $table->string("name", 100);
             $table->binary("permissions")->default(null)->nullable();
-            $table->integer("parent_uid");
         });
 
         $beRole = new BeRole;
-
-        $beRole->name = "admin";
-        $beRole->parent_uid = 1;
-
+        $beRole->name = "Admin";
+        $beRole->permissions = json_encode([
+            1
+        ]);
         $beRole->save();
+
+        $beRole2 = new BeRole;
+        $beRole2->name = "Developer";
+        $beRole2->permissions = json_encode([
+            2, 3, 4
+        ]);
+        $beRole2->save();
     }
 
     /**

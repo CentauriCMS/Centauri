@@ -45,7 +45,7 @@ class CentauriBeUsers extends Migration
         $beUser->username = "admin";
         $beUser->password = "password";
         $beUser->roles = json_encode([
-            "admin"
+            1, 2
         ]);
 
         $beUser->save();

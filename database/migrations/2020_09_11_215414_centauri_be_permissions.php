@@ -31,16 +31,24 @@ class CentauriBePermissions extends Migration
 
             $table->string("identifier", 100);
             $table->tinyInteger("is_admin")->default(0);
-            $table->integer("parent_uid");
         });
 
-        $beRole = new BePermission;
+        $bePermission = new BePermission;
+        $bePermission->identifier = "admin";
+        $bePermission->is_admin = 1;
+        $bePermission->save();
 
-        $beRole->identifier = "admin";
-        $beRole->is_admin = 1;
-        $beRole->parent_uid = 1;
+        $permissions = [
+            "PAGES_CREATE",
+            "PAGES_EDIT",
+            "PAGES_DELETE"
+        ];
 
-        $beRole->save();
+        foreach($permissions as $permission) {
+            $bePerm = new BePermission;
+            $bePerm->identifier = $permission;
+            $bePerm->save();
+        }
     }
 
     /**
